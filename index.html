@@ -62,11 +62,95 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      // Step 3
+      try {
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (err) {
+        console.error(`Error: ${err.name}\n${err.essage}\n${err.stack}`);
+      } finally {
+        console.log("Finally");
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
     // TODO - Make buttons functional
+    // Step 2
+    errorBtns[0].addEventListener('click', () => {
+      console.log("Console Log Demo");
+    });
+    errorBtns[1].addEventListener('click', () => {
+      console.error("Console Error Demo");
+    });
+    errorBtns[2].addEventListener('click', () => {
+      console.dir(errorBtns[2]);
+    });
+    errorBtns[3].addEventListener('click', () => {
+      console.dirxml(errorBtns[3]);
+    });
+    const label = "hehe xd lmao";
+    errorBtns[4].addEventListener('click', () => {
+      console.group(label);
+      console.info("hehe");
+      console.info("xd");
+      console.info("lmao");
+    });
+    errorBtns[5].addEventListener('click', () => {
+      console.groupEnd(label);
+    });
+    errorBtns[6].addEventListener('click', () => {
+      console.table([
+        {
+          first: 'Nathaniel',
+          last: 'Wong'
+        },
+        {
+          first: 'Joshua',
+          last: 'Zhu'
+        },
+      ]);
+    });
+    errorBtns[7].addEventListener('click', () => {
+      console.time();
+    });
+    errorBtns[8].addEventListener('click', () => {
+      console.timeEnd();
+    });
+    errorBtns[9].addEventListener('click', () => {
+      const hehe = () => { xd(); };
+      const xd = () => { lmao(); };
+      const lmao = () => { lol(); };
+      const lol = () => { console.trace(); };
+      hehe();
+    });
+    // Step 5
+    errorBtns[10].addEventListener('click', () => {
+      throwHehexdError('Trigger a Global Error');
+    });
+    
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+        console.log(`oopsies \n${error}`);
+    };
+    
+    // Step 4
+    class hehexdError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "hehexdError";
+      }
+    }
+
+    function throwHehexdError() {
+      throw new hehexdError('ecks dee');
+    }
+/*
+    try {
+      throwHehexdError();
+    } catch(err) {
+      console.error(`Error: ${err.name}\n${err.essage}\n${err.stack}`);
+    } finally {
+      console.log('lol xd');
+    }*/
+
   </script>
 </body>
 </html>
