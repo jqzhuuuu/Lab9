@@ -132,11 +132,11 @@
     });
     // Step 5
     errorBtns[10].addEventListener('click', () => {
-      throwHehexdError('Trigger a Global Error');
+      throwHehexdError();
     });
     
     window.onerror = function (msg, url, lineNo, columnNo, error) {
-        console.log(`oopsies \n${error}`);
+        console.log(`oopsies`);
     };
     
     // Step 4
