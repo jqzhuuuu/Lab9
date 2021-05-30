@@ -54,8 +54,20 @@
     <button>Console Trace</button>
     <button>Trigger a Global Error</button>
   </section>
+  
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "604e6982c3134d3995133d61a89bf6e0"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
 
   <script>
+    TrackJS.track('Testing TrackJS!');
+
+
+    
     let calculateBtn = document.querySelector('#calculate');
     calculateBtn.addEventListener('click', () => {
       let output = document.querySelector('output');
