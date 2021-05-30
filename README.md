@@ -2,5 +2,5 @@
 https://jqzhuuuu.github.io/Lab9/
 
 # Authors
-Nathaniel Wong
+Nathaniel Wong  
 Joshua Zhu
